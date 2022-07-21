@@ -42,4 +42,26 @@ describe('ProductService', () => {
 
     expect(await service.findAll()).toEqual([createdProduct]);
   });
+
+  it('should be create a new product', async () => {
+    const productToBeCreated = {
+      descricao: 'descricao test',
+      marca: 'marca teste',
+      observacao: 'observacao test'
+    };
+
+    const createdProduct = {
+      id: 'abe5d5a1-d9ae-4909-aaa7-7bd0f112ece4',
+      descricao: 'descricao teste',
+      marca: 'marca teste',
+      observacao: 'observacao teste',
+      dataCadastro: new Date()
+    };
+
+    jest
+      .spyOn(repository, 'create')
+      .mockReturnValue(Promise.resolve(createdProduct));
+
+    expect(await service.create(productToBeCreated)).toBe(createdProduct);
+  });
 });
