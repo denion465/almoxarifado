@@ -7,11 +7,11 @@ export class AddTableProduct1658358206016 implements MigrationInterface {
         create schema if not exists almoxarifado;
 
         create table if not exists almoxarifado.product(
-          id uuid not null primary key,
+          id uuid not null primary key default uuid_generate_v4(),
           descricao text not null,
           marca character varying(100) not null,
           observacao varchar,
-          data_cadastro timestamp not null default now()
+          data_cadastro timestamp default (now() at time zone 'America/Sao_Paulo')
         );
       `
     );
