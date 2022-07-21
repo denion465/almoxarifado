@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
-// import { WarehouseModule } from './warehouse/warehouse.module';
+import { WarehouseModule } from './warehouse/warehouse.module';
 
 @Module({
   imports: [
@@ -19,7 +19,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       cli: {
         migrationsDir: './src/database/migrations'
       }
-    })
+    }),
+    WarehouseModule
   ]
 })
 export class AppModule {}
